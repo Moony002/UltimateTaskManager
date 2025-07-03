@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="MissingClass">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotes"
@@ -23,7 +24,7 @@
         android:id="@+id/buttonAddNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="50dp"
         android:layout_marginBottom="92dp"
         android:clickable="true"
         android:contentDescription="Добавить новую заметку"

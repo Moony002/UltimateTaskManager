@@ -4,16 +4,23 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class NoteDetailActivity : AppCompatActivity() {
 
     private lateinit var editTextNoteTitle: EditText
     private lateinit var editTextNoteContent: EditText
+    private lateinit var applyChangesButton: ImageButton
+    private lateinit var backButton: ImageButton
+    private lateinit var colorPicker: ImageButton
+
 
     // Переменные для хранения исходного заголовка и содержимого (если заметка существует)
     private var originalTitle: String = ""
     private var originalContent: String = ""
+    private var originalColor: String = "#FFFFFF" // Добавили оригинальный цвет
+    private var selectedColor: String = "#FFFFFF" // Храним текущий выбранный цвет
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +28,8 @@ class NoteDetailActivity : AppCompatActivity() {
 
         editTextNoteTitle = findViewById(R.id.editTextNoteTitle)
         editTextNoteContent = findViewById(R.id.editTextNoteContent)
+        applyChangesButton = findViewById(R.id.applyChangesButton)
+        backButton = findViewById(R.id.backButton)
 
         // Получаем данные, переданные через Intent
         originalTitle = intent.getStringExtra("note_title") ?: ""
@@ -34,12 +43,19 @@ class NoteDetailActivity : AppCompatActivity() {
         } else {
             supportActionBar?.title = "Новая заметка"
         }
+
+        applyChangesButton.setOnClickListener{
+            saveNoteAndExit()
+        }
+
+        backButton.setOnClickListener{
+            saveNoteAndExit()
+        }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         saveNoteAndExit()
-        // Не вызываем super.onBackPressed() здесь, так как saveNoteAndExit() вызывает finish()
     }
 
     private fun saveNoteAndExit() {

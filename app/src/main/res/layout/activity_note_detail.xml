@@ -2,35 +2,89 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteDetailRootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NoteDetailActivity"
     android:padding="16dp">
+
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:clickable="false"
+        android:contentDescription="Вернуться назад"
+        android:focusable="false"
+        android:src="@drawable/outline_arrow_back_24"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="0dp"
+        app:fabCustomSize="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/black" />
+
+    <ImageButton
+        android:id="@+id/applyChangesButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="false"
+        android:contentDescription="Сохранить изменения"
+        android:focusable="true"
+        android:src="@drawable/baseline_check_24"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/black"
+        android:layout_marginTop="8dp" />
 
     <EditText
         android:id="@+id/editTextNoteTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Заголовок"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:maxLines="1"
         android:inputType="textCapSentences"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:maxLines="1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/applyChangesButton" />
 
     <EditText
         android:id="@+id/editTextNoteContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="Текст заметки"
         android:gravity="top"
+        android:textSize="20sp"
+        android:hint="Текст заметки"
         android:inputType="textMultiLine|textCapSentences"
-        app:layout_constraintTop_toBottomOf="@id/editTextNoteTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/colorPickerButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editTextNoteTitle" />
+
+    <ImageButton
+        android:id="@+id/colorPickerButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:clickable="false"
+        android:contentDescription="Выбрать цвет заметки"
+        android:focusable="true"
+        android:src="@drawable/baseline_palette_24"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="0dp"
+        app:fabCustomSize="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@android:color/black"
+        android:layout_marginBottom="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
