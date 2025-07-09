@@ -6,4 +6,21 @@
     </style>
 
     <style name="Theme.UltimateNotesManager" parent="Base.Theme.UltimateNotesManager" />
+
+    //For Calendar things
+    <style name="Theme.YourApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#6750A4</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">#EADDFF</item>
+        <item name="colorOnPrimaryContainer">#21005D</item>
+    </style>
+
+    <style name="CalendarWeekDayTextAppearance" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/material_on_surface_emphasis_medium</item> <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CalendarDateTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/material_on_surface_emphasis_medium</item> </style>
+    //End of Calendar things
+
 </resources>

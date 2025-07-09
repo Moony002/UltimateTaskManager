@@ -13,6 +13,9 @@
         android:theme="@style/Theme.UltimateNotesManager"
         tools:targetApi="31">
         <activity
+            android:name=".DatePicker"
+            android:exported="false" />
+        <activity
             android:name=".NoteDetailActivity"
             android:exported="false" />
         <activity
