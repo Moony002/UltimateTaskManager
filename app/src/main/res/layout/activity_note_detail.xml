@@ -65,27 +65,53 @@
         android:inputType="textMultiLine|textCapSentences"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/colorPickerButton"
+        app:layout_constraintBottom_toTopOf="@+id/custom_oval_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextNoteTitle"
         android:background="@android:color/transparent" />
 
-    <ImageButton
-        android:id="@+id/colorPickerButton"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:clickable="false"
-        android:contentDescription="Выбрать цвет заметки"
-        android:focusable="true"
-        android:src="@drawable/baseline_palette_24"
-        app:backgroundTint="@android:color/transparent"
-        app:elevation="0dp"
-        app:fabCustomSize="48dp"
+    <LinearLayout
+        android:id="@+id/custom_oval_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/toolbar_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:tint="@android:color/black"
-        android:layout_marginBottom="26dp" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_edit"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="3dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Добавить цвет"
+            android:focusable="true"
+            android:src="@drawable/baseline_palette_24" />
+
+        <ImageView
+            android:id="@+id/icon_calendar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="3dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Добавить в календарь"
+            android:focusable="true"
+            android:src="@drawable/baseline_today_24" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

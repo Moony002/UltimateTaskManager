@@ -7,9 +7,29 @@
     tools:context=".MainActivity">
 
     <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:clickable="false"
+        android:contentDescription="Вернуться назад"
+        android:focusable="false"
+        android:src="@drawable/outline_arrow_back_24"
+        app:backgroundTint="@android:color/transparent"
+        app:elevation="0dp"
+        app:fabCustomSize="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/black" />
+
+    <ImageButton
         android:id="@+id/applyChangesButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:clickable="false"
         android:contentDescription="Сохранить изменения"
         android:focusable="true"
@@ -18,8 +38,7 @@
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/black"
-        android:layout_marginTop="8dp" />
+        app:tint="@android:color/black" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dateInputLayout"

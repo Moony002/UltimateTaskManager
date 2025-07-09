@@ -9,4 +9,12 @@
     <color name="note_color_green">#C8E6C9</color>
     <color name="note_color_yellow">#FFF9C4</color>
     <color name="material_on_surface">#FFF9C4</color>
+
+    //Toolbar things
+    <color name="toolbar_background">#F0E6FA</color>
+    <color name="toolbar_stroke">#E0D1F3</color>
+    <color name="icon_color">#424242</color>
+    <color name="divider_color">#D0C0E8</color>
+    //End of ToolBar things
+
 </resources>
