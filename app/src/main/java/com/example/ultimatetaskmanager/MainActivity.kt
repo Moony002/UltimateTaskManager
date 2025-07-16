@@ -6,12 +6,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
@@ -30,21 +32,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ultimatetaskmanager.ui.theme.UltimateTaskManagerTheme
 
-data class Note(val id: Int,
-                val title: String,
-                val content: String
+data class Note(
+    val id: Int,
+    val title: String,
+    val content: String,
+    val time: String?
 )
 
 val schedularList: List<Note> = listOf(
-    Note(1, "Title 1", "Content 1"),
-    Note(2, "Title 2", "Content 2"),
-    Note(3, "Title 3", "Content 3"),
-    Note(4, "Title 4", "Content 4")
+    Note(1, "Schedular 1", "Content 1\n sadjlasjkdlasjdklakjsdlajslkdjalsd", "8:00"),
+    Note(2, "Schedular 2", "Content 2", "9:00"),
+    Note(3, "Schedular 3", "Content 3", "10:00, June 10"),
+    Note(4, "Schedular 4", "Content 4", "11:00"),
+    Note(5, "Schedular 5", "Content 5", "12:00"),
+    Note(6, "Schedular 6", "Content 6", "13:00"),
+    Note(7, "Schedular 7", "Content 7", "14:00")
 )
-var notesList: List<Note> = listOf()
+var notesList: List<Note> = listOf(
+    Note(1, "Note 1", "Content 1", null),
+    Note(2, "Note 2", "Content 2", null),
+    Note(3, "Note 3", "Content 3", null),
+    Note(4, "Note 4", "Content 4", null),
+    Note(5, "Note 5", "Content 5", null),
+    Note(6, "Note 6", "Content 6", null),
+    Note(7, "Note 7", "Content 7", null)
+)
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
+//    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -71,10 +86,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainPage(modifier: Modifier = Modifier,
-//             schedularNotes: List<Note> = schedularList,
-//             notes: List<Note> = notesList
-) {
+fun MainPage(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize(),
@@ -92,51 +104,74 @@ fun MainPage(modifier: Modifier = Modifier,
             modifier = Modifier.fillMaxWidth()
                 .padding(16.dp),
         )
-        LazyRow(
+        LazyHorizontalGrid(
+            rows = GridCells.Fixed(2),
             modifier = Modifier.fillMaxWidth()
-        ){
+                .height(296.dp),
+        ) {
             items(
                 items = schedularList,
-                key = {note -> note.id}
+                key = { note -> note.id }
             ){
-                note ->
-                SchedularItem(note = note)
+                note -> NoteListItem( note = note )
             }
         }
         Text(
             text = "Notes",
             fontSize = 24.sp,
             textAlign = TextAlign.Start,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
                 .padding(16.dp),
         )
-        LazyRow {
 
+        LazyHorizontalGrid(
+            rows = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxWidth()
+                .height(250.dp),
+        ) {
+            items(
+                items = notesList,
+                key = { note -> note.id }
+            ){
+                    note -> NoteListItem( note = note )
+            }
         }
+
     }
 }
 
 @Composable
-fun SchedularItem(note: Note) {
+fun NoteListItem(note: Note){
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxSize()
             .padding(8.dp)
-    ) {
+            .height(296.dp)
+            .width(200.dp)
+    ){
         Column(
             modifier = Modifier.padding(24.dp),
-            horizontalAlignment = Alignment.Start,
+            horizontalAlignment = Alignment.Start
         ) {
             Text(
                 text = note.title,
-                fontSize = 20.sp,
+                fontSize = 24.sp,
             )
             Text(
                 text = note.content,
                 fontSize = 16.sp,
+                maxLines = 1
             )
+            if(note.time != null){
+                Text(
+                    text = note.time,
+                    fontSize = 16.sp
+                )
+            }
         }
     }
 }
+
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Preview(showBackground = true)
